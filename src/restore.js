@@ -36,14 +36,16 @@ async function run() {
 
   const hash = md5File.sync("yarn.lock");
 
-  const primaryKey = `${os}-yarn-cache-${hash}`;
-  const restoreKey = `${os}-yarn-cache-`;
+  const primaryKey = `${os}-yarn-node-cache-${hash}`;
+  const restoreKey = `${os}-yarn-node-cache-`;
   core.saveState("YARN_CACHE_KEY", primaryKey);
   core.info(`Cache keys: ${[primaryKey, restoreKey].join(", ")}`);
 
-  const cacheKey = await cache.restoreCache([cachePath], primaryKey, [
-    restoreKey,
-  ]);
+  const cacheKey = await cache.restoreCache(
+    [cachePath, "node_modules"],
+    primaryKey,
+    [restoreKey]
+  );
 
   if (!cacheKey) {
     core.info("Cache not found");

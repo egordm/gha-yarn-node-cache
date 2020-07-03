@@ -1,7 +1,7 @@
 {
-  "name": "gha-yarn-cache",
+  "name": "gha-yarn-node-cache",
   "version": "1.0.0",
-  "description": "1-liner yarn install cache for GitHub Actions",
+  "description": "1-liner to cache yarn and node_modules",
   "scripts": {
     "build": "ncc build src/save.js --out dist/save --minify && ncc build src/restore.js --out dist/restore --minify",
     "test": "echo 'No test framework configured'",
@@ -16,10 +16,11 @@
     "github",
     "action",
     "yarn",
+    "node_modules",
     "install",
     "cache"
   ],
-  "author": "c-hive",
+  "author": "egordm",
   "license": "MIT",
   "//dependencies": {},
   "dependencies": {

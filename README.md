@@ -1,6 +1,6 @@
-# gha-yarn-cache
+# gha-yarn-node-cache
 
-#### 1-liner yarn install cache for GitHub Actions
+#### 1-liner to cache yarn and node_modules
 
 Status and support
 
@@ -12,7 +12,7 @@ Status and support
 
 GitHub Action caches improve build times and reduce network dependencies. However, writing the correct cache logic is [tricky](https://github.com/actions/cache/blob/9ab95382c899bf0953a0c6c1374373fc40456ffe/examples.md#node---yarn). You need to understand how the [cache action](https://github.com/actions/cache) (keys and restore keys) work. Did you know you're not supposed to cache the `node_modules` folder? The setup is different per OS and takes a lot of space in your workflows. Not anymore!
 
-`gha-yarn-cache` is a simple 1-liner that covers all use-cases, correctly:
+`gha-yarn-node-cache` is a simple 1-liner that covers all use-cases, correctly:
 - Caches the Yarn cache directory instead of `node-modules` [as recommended](https://github.com/actions/cache/blob/9ab95382c899bf0953a0c6c1374373fc40456ffe/examples.md#node---yarn)
 - Works on Ubuntu, MacOS and Windows
 - Restore keys take the OS into account [as recommended](https://github.com/actions/cache/blob/9ab95382c899bf0953a0c6c1374373fc40456ffe/examples.md#node---yarn)
@@ -22,7 +22,7 @@ GitHub Action caches improve build times and reduce network dependencies. Howeve
 
 Add this step before `yarn install`:
 ```yml
-uses: c-hive/gha-yarn-cache@v1
+uses: egordm/gha-yarn-node-cache@v1
 ```
 
 For example:
@@ -39,7 +39,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - uses: c-hive/gha-yarn-cache@v1
+    - uses: egordm/gha-yarn-node-cache@v1
 
     - name: Install JS dependencies
       run: yarn install
@@ -64,9 +64,9 @@ jobs:
       ${{ runner.os }}-yarn-
 ```
 
-`gha-yarn-cache`
+`gha-yarn-node-cache`
 ```yml
-- uses: c-hive/gha-yarn-cache@v1
+- uses: egordm/gha-yarn-node-cache@v1
 ```
 
 ## Conventions

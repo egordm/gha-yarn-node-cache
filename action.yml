@@ -1,6 +1,6 @@
-name: 'Yarn install cache'
-author: 'c-hive'
-description: '1-liner yarn install cache for GitHub Actions'
+name: 'Yarn & Node install cache'
+author: 'egordm'
+description: '1-liner to cache yarn and node_modules'
 runs:
   using: 'node12'
   main: 'dist/restore/index.js'

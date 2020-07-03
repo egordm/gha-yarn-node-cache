@@ -15,7 +15,7 @@ async function run() {
 
   // https://github.com/actions/cache/blob/9ab95382c899bf0953a0c6c1374373fc40456ffe/src/save.ts#L39-L49
   try {
-    await cache.saveCache([cachePath], primaryKey);
+    await cache.saveCache([cachePath, "node_modules"], primaryKey);
   } catch (error) {
     if (error.name === cache.ValidationError.name) {
       throw error;
